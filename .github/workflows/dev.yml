@@ -7,12 +7,6 @@ on:
     branches: ['master']
 
 jobs:
-  sample:
-    runs-on: ubuntu-latest
-    steps:
-      - name: my-step
-        run: echo "Hello World"
-
   #build-job
   build:
     runs-on: ubuntu-latest
@@ -48,5 +42,5 @@ jobs:
     #       - name: Deploy to GitHub Pages
     #         uses: peaceiris/actions-gh-pages@v3
     #     with:
-    #       github_token: ${{ secrets.CI_CD_SECRET_KEY }}
+    #       github_token:
     #       publish_dir: ./dist
