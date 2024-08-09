@@ -1,4 +1,4 @@
-name: testing CI/CD
+name: development
 
 on:
   push:
@@ -7,13 +7,17 @@ on:
     branches: ['master']
 
 jobs:
+  sample-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: my-step
+        run: echo "Hello World"
+
   build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [16.x]
-
+        node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
@@ -22,4 +26,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm ci
-      - run: npm run build --if-present
+      - run: npm install
+      - run: npm run build
+      - name: deploy
+        run: echo "Deploying..."
