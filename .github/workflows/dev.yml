@@ -28,5 +28,17 @@ jobs:
       - run: npm ci
       - run: npm install
       - run: npm run build
-      - name: deploy
-        run: echo "Deploying..."
+      - name: build
+        run: echo "Success Build!!!"
+
+  deploy:
+    # Add a dependency to the build job
+    needs: build
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.CI_CD_SECRET_KEY }}
+          publish_dir: ./dist
