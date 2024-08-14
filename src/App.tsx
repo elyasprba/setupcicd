@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <div>
-        <h4>Success implement pipeline CI/CD using Github Actions</h4>
+        <h4>Success implement pipeline CI/CD using Github Actions!</h4>
         <p>@elyasprba</p>
       </div>
     </>
